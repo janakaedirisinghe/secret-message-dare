@@ -8,8 +8,8 @@ const handlebars = require('express-handlebars');
 const cookie = require('cookie');
 
 
-// const urlVariable = 'http://localhost:3000/user/message/';
-const urlVariable = 'https://quiz-prank.herokuapp.com/user/message/';
+const urlVariable = 'http://localhost:3000/user/message/';
+// const urlVariable = 'https://quiz-prank.herokuapp.com/user/message/';
 
 router.post('/', (req,res,next) => {
    const user = new User({
@@ -28,8 +28,9 @@ router.post('/', (req,res,next) => {
 
                 res.setHeader('Set-Cookie', cookie.serialize('id', result._id), {
                     httpOnly: true,
-                    maxAge: 60 * 60 * 24 * 7 // 1 week
-                });
+
+                    expires: 60 * 60 * 24 * 7
+            });
 
                res.redirect(urlMessage);
 
