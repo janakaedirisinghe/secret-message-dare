@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fc6505b-d72d-4760-b0cc-1f7c649fcf0c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/index.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.handlebars" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/message.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/message.handlebars" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -92,8 +90,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/message.handlebars">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+            <state relative-caret-position="170">
+              <caret line="10" column="175" selection-start-line="10" selection-start-column="175" selection-end-line="10" selection-end-column="175" />
               <folding>
                 <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
               </folding>
@@ -244,12 +242,12 @@
       <updated>1574100104724</updated>
       <workItem from="1574100106825" duration="9929000" />
       <workItem from="1574146410270" duration="13593000" />
-      <workItem from="1574193133249" duration="437000" />
+      <workItem from="1574193133249" duration="707000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23959000" />
+    <option name="totallyTimeSpent" value="24229000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -345,8 +343,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/message.handlebars">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+        <state relative-caret-position="170">
+          <caret line="10" column="175" selection-start-line="10" selection-start-column="175" selection-end-line="10" selection-end-column="175" />
           <folding>
             <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
           </folding>
