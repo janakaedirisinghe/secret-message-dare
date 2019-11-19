@@ -7,7 +7,9 @@
         <div class="form-group"><input type="text" class="form-control " name="name" id="in-name" value="{{data.url}}" required=""></div>
 
         <div class="form-group"><button id="myInput" class="btn btn-block" style="background-color: cadetblue;color: white" onclick="myFunction()">Click to Copy</button></div>
-<br>
+
+<a class="btn btn-success" style="background-color: cadetblue;color: white;width: 100%;" href="https://api.whatsapp.com/send?text={{data.url}}" target="_blank">WA</a>
+<br><br>
 <div class="form-group"><a href="javascript:window.location.href=window.location.href"   class="btn btn-block" style="background-color: teal;color: white">check your secret message</a></div>
 
 <!--        <br>-->
@@ -19,6 +21,22 @@
 <!--        </ul>-->
         <br>
         <h2 style="text-align: center">Anonymous Message Timeline</h2> <br>
+<script>
+    function myFunction() {
+        /* Get the text field */
+        var copyText = document.getElementById("in-name");
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+
+        /* Alert the copied text */
+        alert("Copied the text: " + copyText.value);
+    }
+</script>
 
 
         {{#each data.result}}
