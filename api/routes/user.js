@@ -6,6 +6,10 @@ const User = require('../model/user');
 const Message = require('../model/message');
 const handlebars = require('express-handlebars');
 
+
+const urlVariable = 'http://localhost:3000/user/message/';
+// const urlVariable = 'http://localhost:3000/user/message/';
+
 router.post('/', (req,res,next) => {
    const user = new User({
       _id: new mongoose.Types.ObjectId(),
@@ -37,31 +41,12 @@ router.post('/', (req,res,next) => {
 router.get('/home/:id',(req,res,next) => {
 
    const id = req.params.id;
-   // User.findById(id)
-   //     .exec()
-   //     .then(
-   //         result => {
-   //
-   //
-   //         }
-   //     )
-   //     .catch(err=>{
-   //        res.json({
-   //           error:err
-   //        })
-   //     });
-
    Message.find({ user: id})
        .exec()
        .then(result => {
            const array = {
                result : result,
-               // url: url.format({
-               //       protocol: req.protocol,
-               //       host: req.get('host'),
-               //       pathname: req.originalUrl
-               //   }),
-               url: 'http://localhost:3000/user/message/'+ id+'' ,
+               url: urlVariable + id
            };
             // res.json(array);
            res.render("message", { data : array });
@@ -76,10 +61,14 @@ router.get('/home/:id',(req,res,next) => {
 
 router.get('/message/:id', (req,res,next) => {
    const id = req.params.id;
-   const array = {
-     id:id
-   };
-   res.render("inputMessage",{data: array});
+
+   User.findById(id)
+       .exec()
+       .then( result => {
+           res.render("inputMessage",{data: result});
+       })
+       .catch();
+
 });
 
 router.post('/message' , (req,res,next) => {
