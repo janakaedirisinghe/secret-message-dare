@@ -5,6 +5,7 @@ const url = require('url');
 const User = require('../model/user');
 const Message = require('../model/message');
 const handlebars = require('express-handlebars');
+const cookie = require('cookie');
 
 
 // const urlVariable = 'http://localhost:3000/user/message/';
@@ -24,6 +25,12 @@ router.post('/', (req,res,next) => {
                   host: req.get('host'),
                   pathname: req.originalUrl
                }) + '/home/' + result._id ;
+
+                res.setHeader('Set-Cookie', cookie.serialize('id', result._id), {
+                    httpOnly: true,
+                    maxAge: 60 * 60 * 24 * 7 // 1 week
+                });
+
                res.redirect(urlMessage);
 
             }

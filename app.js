@@ -4,6 +4,8 @@ const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const bodyParser  =require('body-parser');
 const morgan = require('morgan');
+const cookie = require('cookie');
+const url = require('url');
 
 // mongoose connect
 mongoose.connect('mongodb+srv://janaka531:Jayantha@531@cluster0-01qr2.mongodb.net/test?retryWrites=true&w=majority', {
@@ -42,7 +44,21 @@ app.get('/css/main.css', function(req, res){ res.send("./views"); res.end(); })
 
 
 app.get('/',(req,res,next) => {
-    res.render("index");
+
+    // Parse the cookies on the request
+    var cookies = cookie.parse(req.headers.cookie || '');
+
+    if (cookies.id){
+        const urlTest =  url.format({
+            protocol: req.protocol,
+            host: req.get('host'),
+            pathname: req.originalUrl
+        }) + 'user/home/' + cookies.id ;
+        res.redirect(urlTest);
+    } else {
+        res.render("index");
+    }
+
 });
 
 // user routs
