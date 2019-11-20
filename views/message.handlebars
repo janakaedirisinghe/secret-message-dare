@@ -12,15 +12,27 @@
 <br><br>
 <div class="form-group"><a href="javascript:window.location.href=window.location.href"   class="btn btn-block" style="background-color: teal;color: white">check your secret message</a></div>
 
-<!--        <br>-->
-<!--        <ul class="list-group">-->
-<!--            {{#each data.result}}-->
-<!--                <li class="list-group-item">{{this.message}}</li>-->
-
-<!--            {{/each}}-->
-<!--        </ul>-->
         <br>
         <h2 style="text-align: center">Anonymous Message Timeline</h2> <br>
+
+{{#if data.isEmpty}}
+    <div class="card border-success  mb-3" style="max-width: 100%;color: black;text-align: center;background-color: #eee">
+        <div class="card-body text-back">
+            <b> <p class="card-text">No messages yet! share your link on whatsapp to receive messages.</p></b>
+        </div>
+    </div>
+{{else}}
+    {{#each data.result}}
+        <div class="card border-success  mb-3" style="max-width: 100%;color: black;text-align: center;background-color: #eee">
+            <div class="card-body text-back">
+                <b> <p class="card-text">{{this.message}}</p></b>
+            </div>
+        </div>
+    {{/each}}
+{{/if}}
+
+
+
 
 <!--button click function-->
 <script>
@@ -39,14 +51,3 @@
         alert("Copied the text: " + copyText.value);
     }
 </script>
-
-
-        {{#each data.result}}
-            <div class="card border-success  mb-3" style="max-width: 100%;color: black;text-align: center;background-color: #eee">
-                <div class="card-body text-back">
-                   <b> <p class="card-text">{{this.message}}</p></b>
-                </div>
-            </div>
-        {{/each}}
-
-

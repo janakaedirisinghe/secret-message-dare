@@ -19,6 +19,8 @@ router.post('/', (req,res,next) => {
       name: req.body.name
    });
 
+
+
    user.save()
        .then(
             result => {
@@ -44,6 +46,7 @@ router.post('/', (req,res,next) => {
 
 
                 });
+
                res.redirect(urlMessage);
 
             }
@@ -64,10 +67,18 @@ router.get('/home/:id',(req,res,next) => {
    Message.find({ user: id})
        .exec()
        .then(result => {
+           var isEmpty;
+           if (result.length ==  0){
+               isEmpty = true;
+           } else {
+               isEmpty = false;
+           }
            const array = {
                result : result,
-               url: urlVariable + id
+               url: urlVariable + id,
+               isEmpty: isEmpty
            };
+
             // res.json(array);
            res.render("message", { data : array });
        })

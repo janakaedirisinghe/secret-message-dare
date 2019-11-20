@@ -40,6 +40,7 @@ const user = require('./api/routes/user');
 // handlebar middleware
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
+
 // app.get('/css/main.css', function(req, res){ res.send("./views"); res.end(); })
 
 app.use(express.static('public'));
