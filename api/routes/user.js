@@ -6,6 +6,7 @@ const User = require('../model/user');
 const Message = require('../model/message');
 const handlebars = require('express-handlebars');
 const cookie = require('cookie');
+const fs = require('fs');
 
 
 // const urlVariable = 'http://localhost:3000/user/message/';
@@ -31,7 +32,17 @@ router.post('/', (req,res,next) => {
 
                     expires: 60 * 60 * 24 * 7
             });
+                // count
+                fs.readFile("./api/routes/temp.txt", "utf-8", (err, data) => {
+                    var count = Number(data)+1;
 
+                    fs.writeFile("./api/routes/temp.txt", count, (err) => {
+                        if (err) console.log(err);
+                        console.log("Successfully Written to File.");
+                    });
+
+
+                });
                res.redirect(urlMessage);
 
             }
@@ -91,6 +102,32 @@ router.post('/message' , (req,res,next) => {
            res.redirect('/')
         )
         .catch();
+
+});
+
+router.get('/count', (req,res,next) => {
+
+// file write
+    // var data = "New File Contents";
+    //
+
+
+    // file read
+    fs.readFile("./api/routes/temp.txt", "utf-8", (err, data) => {
+        var count = Number(data);
+        //
+        // fs.writeFile("./api/routes/temp.txt", count, (err) => {
+        //     if (err) console.log(err);
+        //     console.log("Successfully Written to File.");
+        // });
+
+        res.json({
+            count: count
+        })
+
+    });
+
+
 
 });
 
