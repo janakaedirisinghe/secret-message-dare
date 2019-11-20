@@ -10,8 +10,8 @@ const fs = require('fs');
 
 // express.use(express.static('public'));
 
-// const urlVariable = 'http://localhost:3000/user/message/';
-const urlVariable = 'https://quiz-prank.herokuapp.com/user/message/';
+const urlVariable = 'http://localhost:3000/user/message/';
+// const urlVariable = 'https://quiz-prank.herokuapp.com/user/message/';
 
 router.post('/', (req,res,next) => {
    const user = new User({
@@ -115,19 +115,30 @@ router.get('/count', (req,res,next) => {
 
     // file read
     fs.readFile("./api/routes/temp.txt", "utf-8", (err, data) => {
-        var count = Number(data);
-        //
+
+         var count = Number(data);
+
+
         // fs.writeFile("./api/routes/temp.txt", count, (err) => {
         //     if (err) console.log(err);
         //     console.log("Successfully Written to File.");
         // });
+        Message.find()
+            .exec()
+            .then(result=> {
 
-        res.json({
-            count: count
-        })
+                res.json({
+                    user_count: count,
+                    message_count : result.length
+                })
+            })
+            .catch();
+
+
+
+
 
     });
-
 
 
 });
