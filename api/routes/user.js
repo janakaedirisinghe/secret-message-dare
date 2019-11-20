@@ -10,8 +10,8 @@ const fs = require('fs');
 
 // express.use(express.static('public'));
 
-const urlVariable = 'http://localhost:3000/user/message/';
-// const urlVariable = 'https://quiz-prank.herokuapp.com/user/message/';
+// const urlVariable = 'http://localhost:3000/user/message/';
+const urlVariable = 'https://quiz-prank.herokuapp.com/user/message/';
 
 router.post('/', (req,res,next) => {
    const user = new User({
@@ -68,6 +68,7 @@ router.get('/home/:id',(req,res,next) => {
        .exec()
        .then(result => {
            var isEmpty;
+           var messageCount = result.length;
            if (result.length ==  0){
                isEmpty = true;
            } else {
@@ -76,7 +77,8 @@ router.get('/home/:id',(req,res,next) => {
            const array = {
                result : result,
                url: urlVariable + id,
-               isEmpty: isEmpty
+               isEmpty: isEmpty,
+               messageCount: messageCount
            };
 
             // res.json(array);
@@ -152,6 +154,19 @@ router.get('/count', (req,res,next) => {
     });
 
 
+});
+router.get('/logout', function(req, res){
+    // const cookieTest = req.cookies;
+    res.clearCookie("id");
+
+    // console.log(req.headers.cookie.id);
+    // for (var prop in cookie) {
+    //     if (!cookie.hasOwnProperty(prop)) {
+    //         continue;
+    //     }
+    //     res.cookie(prop, '', {expires: new Date(0)});
+    // }
+    // res.redirect('/');
 });
 
 

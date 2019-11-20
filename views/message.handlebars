@@ -1,16 +1,25 @@
+
 <br>
         <h1 style="text-align: center">😜 Secret Message Book 2019 😘</h1> <br>
         <p>{{data.result.name}}</p>
         <h2 id="h2-result">Share this link with your friends and collect anonymous Messages</h2>
         <p>
             <span class="badge badge-success">New</span> To see received messages, scroll down on this page. Only you will see the received messages. Have FUN!</p>
+{{#if data.isEmpty}}
+
+    {{else}}
+    <span class="badge badge-danger">you have {{data.messageCount}} messages</span>
+    {{/if}}
+
+
+<br><br>
         <div class="form-group"><input type="text" class="form-control " name="name" id="in-name" value="{{data.url}}" required=""></div>
 
-        <div class="form-group"><button id="myInput" class="btn btn-block" style="background-color: cadetblue;color: white" onclick="myFunction()">Click to Copy</button></div>
+        <div class="form-group"><button id="myInput" class="btn btn-block" style="background-color: teal;color: white" onclick="myFunction()">Click to Copy</button></div>
 
-<a class="btn btn-success" style="background-color: cadetblue;color: white;width: 100%;" href="https://api.whatsapp.com/send?text={{data.url}}" target="_blank">Link Share on Whatsap</a>
+<a class="btn btn-success" style="background-color: teal;color: white;width: 100%;" href="https://api.whatsapp.com/send?text={{data.url}}" target="_blank">Link Share on Whatsap</a>
 <br><br>
-<div class="form-group"><a href="javascript:window.location.href=window.location.href"   class="btn btn-block" style="background-color: teal;color: white">check your secret message</a></div>
+<div class="form-group"><a href="javascript:window.location.href=window.location.href"   class="btn btn-block" style="background-color: darkslategrey;color: white">check your secret message</a></div>
 
         <br>
         <h2 style="text-align: center">Anonymous Message Timeline</h2> <br>
@@ -23,7 +32,7 @@
     </div>
 {{else}}
     {{#each data.result}}
-        <div class="card border-success  mb-3" style="max-width: 100%;color: black;text-align: center;background-color: #eee">
+        <div class="card border-success  mb-3" style="max-width: 100%;min-height:100px;color: black;text-align: center;background-color: #eee">
             <div class="card-body text-back">
                 <b> <p class="card-text">{{this.message}}</p></b>
             </div>
