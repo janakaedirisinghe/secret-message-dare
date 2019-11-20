@@ -7,6 +7,8 @@ const morgan = require('morgan');
 const cookie = require('cookie');
 const url = require('url');
 
+
+
 // mongoose connect
 mongoose.connect('mongodb+srv://janaka531:Jayantha@531@cluster0-01qr2.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser:true,useUnifiedTopology: true
@@ -38,8 +40,9 @@ const user = require('./api/routes/user');
 // handlebar middleware
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
-app.get('/css/main.css', function(req, res){ res.send("./views"); res.end(); })
+// app.get('/css/main.css', function(req, res){ res.send("./views"); res.end(); })
 
+app.use(express.static('public'));
 
 
 

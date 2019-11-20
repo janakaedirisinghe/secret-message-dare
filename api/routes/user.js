@@ -8,9 +8,10 @@ const handlebars = require('express-handlebars');
 const cookie = require('cookie');
 const fs = require('fs');
 
+// express.use(express.static('public'));
 
-// const urlVariable = 'http://localhost:3000/user/message/';
-const urlVariable = 'https://quiz-prank.herokuapp.com/user/message/';
+const urlVariable = 'http://localhost:3000/user/message/';
+// const urlVariable = 'https://quiz-prank.herokuapp.com/user/message/';
 
 router.post('/', (req,res,next) => {
    const user = new User({
