@@ -19,8 +19,6 @@ router.post('/', (req,res,next) => {
       name: req.body.name
    });
 
-
-
    user.save()
        .then(
             result => {
@@ -65,6 +63,7 @@ router.get('/home/:id',(req,res,next) => {
 
    const id = req.params.id;
    Message.find({ user: id})
+       .populate('user')
        .exec()
        .then(result => {
            var isEmpty;
@@ -81,7 +80,7 @@ router.get('/home/:id',(req,res,next) => {
                messageCount: messageCount
            };
 
-            // res.json(array);
+            console.log(result);
            res.render("message", { data : array });
        })
        .catch(err=> {

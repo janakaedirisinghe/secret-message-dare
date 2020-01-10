@@ -11,7 +11,8 @@ const url = require('url');
 
 // mongoose connect
 mongoose.connect('mongodb+srv://janaka531:Jayantha@531@cluster0-01qr2.mongodb.net/test?retryWrites=true&w=majority', {
-    useNewUrlParser:true,useUnifiedTopology: true
+    useNewUrlParser:true,
+    useUnifiedTopology: true
 });
 
 app.use((req,res,next) => {
