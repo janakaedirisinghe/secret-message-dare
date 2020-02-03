@@ -169,6 +169,27 @@ router.get('/logout', function(req, res){
     // res.redirect('/');
 });
 
+router.get('/data', (req, res, next) => {
+    User.aggregate([
+        {
+            $lookup: {
+                from: 'messages',
+                localField: '_id',
+                foreignField: 'user',
+                as: 'message'
+            }
+        },
+        {
+            $addFields: {
+                message: "$message"
+            }
+        }
+    ])
+        .then(
+                result => res.send(result)
+        );
+});
+
 
 
 module.exports = router;
