@@ -119,32 +119,33 @@ router.post('/message' , (req,res,next) => {
 });
 
 router.get('/count', (req,res,next) => {
-
-// file write
-    // var data = "New File Contents";
-    //
-
-
-    // file read
     fs.readFile("./api/routes/temp.txt", "utf-8", (err, data) => {
-
          var count = Number(data);
+         let userCount;
+         let messageCount;
 
-
-        // fs.writeFile("./api/routes/temp.txt", count, (err) => {
-        //     if (err) console.log(err);
-        //     console.log("Successfully Written to File.");
-        // });
         Message.find()
             .exec()
             .then(result=> {
 
-                res.json({
-                    user_count: count,
-                    message_count : result.length
-                })
+                messageCount = result.length;
+
+                User.find()
+                    .exec()
+                    .then(
+                        result => {
+                            userCount = result.length;
+                            res.json({
+                                user_count: userCount,
+                                message_count: messageCount
+                            })
+                        }
+                    )
+
+
             })
             .catch();
+
 
 
 
