@@ -190,6 +190,13 @@ router.get('/data', (req, res, next) => {
         );
 });
 
+router.get('/user_count', (req, res, next) => {
+    User.find({})
+        .then(
+                result => res.send(result)
+        );
+});
+
 
 
 module.exports = router;
